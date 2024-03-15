@@ -14,7 +14,7 @@ public class Board {
         [08][09][10][11][12][13][14][15]
         [00][01][02][03][04][05][06][07]
          */
-//white pieces on board
+//white  pieces on board
         board[1][0] = new Pawn( true);
         board[1][1] = new Pawn( true);
         board[1][2] = new Pawn( true);
