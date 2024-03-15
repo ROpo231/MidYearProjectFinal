@@ -1,6 +1,6 @@
 public class Bishop extends Pieces{
 
-    public Bishop() {
-        super("Bishop");
+    public Bishop(boolean isWhite) {
+        super("Bishop", isWhite);
     }
 }

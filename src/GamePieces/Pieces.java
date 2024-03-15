@@ -1,8 +1,10 @@
 public class Pieces {
     private String pieceType;
     private boolean onBoard;
-    public Pieces (String pieceType){
+    private boolean isWhite;
+    public Pieces (String pieceType, boolean isWhite){
         this.pieceType = pieceType;
+        this.isWhite = isWhite;
         onBoard = true;
     }
     public String getPieceType(){
@@ -14,4 +16,12 @@ public class Pieces {
     public void setOnBoard(){
         onBoard = false;
     }
+    public void move(){
+
+    }
+    public void checkForSpaces(){
+
+    }
+
+
 }

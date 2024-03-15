@@ -1,5 +1,5 @@
 public class Pawn extends Pieces {
-    public Pawn( ) {
-        super("Pawn");
+    public Pawn(boolean isWhite) {
+        super("Pawn", isWhite);
     }
 }

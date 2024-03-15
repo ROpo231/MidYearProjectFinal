@@ -1,5 +1,5 @@
 public class Rook extends Pieces {
-    public Rook() {
-        super("Rook");
+    public Rook(boolean isWhite) {
+        super("Rook", isWhite);
     }
 }

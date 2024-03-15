@@ -1,5 +1,5 @@
 public class Knight extends Pieces{
-    public Knight( ) {
-        super("Knight");
+    public Knight(boolean isWhite) {
+        super("Knight", isWhite);
     }
 }
