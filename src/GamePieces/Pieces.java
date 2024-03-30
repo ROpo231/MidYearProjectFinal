@@ -1,4 +1,4 @@
-public class Pieces {
+public class Pieces extends Board {
     private String pieceType;
     private boolean onBoard;
     private boolean isWhite;
@@ -23,6 +23,8 @@ public class Pieces {
     public void checkForSpaces(){
 
     }
+
+
 
 
 }
