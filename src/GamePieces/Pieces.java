@@ -1,8 +1,9 @@
-public class Pieces extends Board {
+public class Pieces {
     private String pieceType;
     private boolean onBoard;
     private boolean isWhite;
     private boolean firstMove;
+
     public Pieces (String pieceType, boolean isWhite){
         this.pieceType = pieceType;
         this.isWhite = isWhite;
@@ -17,12 +18,10 @@ public class Pieces extends Board {
     public void setOnBoard(){
         onBoard = false;
     }
-    public void move(){
-
+    public boolean getIfWhite(){
+        return isWhite;
     }
-    public void checkForSpaces(){
 
-    }
 
 
 
