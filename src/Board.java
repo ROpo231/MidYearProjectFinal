@@ -29,7 +29,7 @@ public class Board {
           2  [08][09][10][11][12][13][14][15]
           1  [00][01][02][03][04][05][06][07]  white
                           K  Q
-               H   G   F   E   D   C   B  A
+               A   B   C   D   E   F   G  H
          */
 //white  pieces on board
         board[1][0] = new Pawn( true);
@@ -93,16 +93,13 @@ public class Board {
         }
         board = tempBoard;
     }
-    //check to see if vaild moves
-    //check to see if
+    //check to see if valid moves
+    //check to see if pieces can make that move
     public void takeTurn(String sPoint, String ePoint, boolean whiteMove){
         if(onBoard(sPoint) && onBoard(ePoint) && (deCode(sPoint).getIfWhite() == whiteMove)){
 
-
-
-
-
         }
+        System.out.println("Cant do that!");
 
     }
 
@@ -118,7 +115,7 @@ public class Board {
     }
     private Pieces deCode(String code){
         int row = Integer.parseInt(code.substring(1));
-        int column = "h".compareTo(code.substring(0, 1));
+        int column = "a".compareTo(code.substring(0, 1));
         return board[row][column];
 
     }
