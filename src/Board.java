@@ -95,11 +95,12 @@ public class Board {
     }
     //check to see if valid moves
     //check to see if pieces can make that move
-    public void takeTurn(String sPoint, String ePoint, boolean whiteMove){
-        if(onBoard(sPoint) && onBoard(ePoint) && (deCode(sPoint).getIfWhite() == whiteMove)){
+    public boolean takeTurn(String sPoint, String ePoint, boolean whiteMove){
+
+        if(onBoard(sPoint) && onBoard(ePoint) && (deCode(sPoint).getIfWhite() == whiteMove) && (deCode(ePoint).getIfWhite() != whiteMove) ){
 
         }
-        System.out.println("Cant do that!");
+
 
     }
 
@@ -117,6 +118,15 @@ public class Board {
         int row = Integer.parseInt(code.substring(1));
         int column = "a".compareTo(code.substring(0, 1));
         return board[row][column];
+
+    }
+
+    private void move(){
+        switch(piece){
+            case :
+
+
+        }
 
     }
 
