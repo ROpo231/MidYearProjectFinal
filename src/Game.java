@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Game {
     private boolean gameOver;
-    private boolean whiteMove;
+    public boolean whiteMove;
     private Scanner scan;
     private Board board;
 
@@ -11,6 +11,8 @@ public class Game {
         whiteMove = true;
         scan = new Scanner(System.in);
     }
+
+    /*
     public void menu(){
         System.out.println("Welcome to The Game Chess\nAll you have to do is specify the piece then write what location you want to the piece to go to");
         while(!gameOver){
@@ -28,6 +30,8 @@ public class Game {
     //check the positions on the board (weather they are there or not )
     //
 
+
+     */
 
 
 }

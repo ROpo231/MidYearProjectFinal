@@ -1,8 +1,11 @@
 //This is gonna be the place where i store the grid and stuff
 
-public class Board {
+import java.util.ArrayList;
+
+public class Board extends Game{
     private Pieces[][] board;
     public Board (){
+        super();
         board = new Pieces[8][8];
         /*Numbers board
         [56][57][58][59][60][61][62][63]
@@ -13,11 +16,6 @@ public class Board {
         [16][17][18][19][20][21][22][23]
         [08][09][10][11][12][13][14][15]
         [00][01][02][03][04][05][06][07]
-
-
-
-
-
 
 
           8  [56][57][58][59][60][61][62][63]    black
@@ -95,13 +93,10 @@ public class Board {
     }
     //check to see if valid moves
     //check to see if pieces can make that move
-    public boolean takeTurn(String sPoint, String ePoint, boolean whiteMove){
-
+    public void takeTurn(String sPoint, String ePoint){
         if(onBoard(sPoint) && onBoard(ePoint) && (deCode(sPoint).getIfWhite() == whiteMove) && (deCode(ePoint).getIfWhite() != whiteMove) ){
 
         }
-
-
     }
 
     //checks if the turn is on the board
@@ -109,7 +104,14 @@ public class Board {
         try{
             deCode(pTurn);
             return true;
-
+        }catch(Exception e){
+            return false;
+        }
+    }
+    private boolean onBoard(int pTurn){
+        try{
+            deCode(pTurn);
+            return true;
         }catch(Exception e){
             return false;
         }
@@ -121,14 +123,43 @@ public class Board {
 
     }
 
-    private void move(){
-        switch(piece){
-            case :
+    private Pieces deCode(int code){
+        String strCode = "" + code;
+        int row = Integer.parseInt(strCode.substring(1));
+        int column = "a".compareTo(strCode.substring(0, 1));
+        return board[row][column];
 
+    }
 
+    private void crisCross(int boardPosition){
+
+        ArrayList<Pieces> spots = new ArrayList<Pieces>();
+        for(int i = boardPosition + 9 ; i < 64; i +=9 ){
+            if(onBoard(i) && deCode(boardPosition).getIfWhite() != whiteMove){
+                spots.add(deCode(boardPosition));
+                if(deCode(boardPosition) != null){
+                    break;
+                }
+            }
+            break;
         }
 
     }
+    private void digAdder(ArrayList<Pieces> list, int boardPosition ){
+        for(int i = boardPosition + 9 ; i < 64; i +=9 ){
+            if(onBoard(i) && deCode(boardPosition).getIfWhite() != whiteMove){
+                list.add(deCode(boardPosition));
+                if(deCode(boardPosition) != null){
+                    list.add(deCode(boardPosition));
+                    break;
+                }
+            }
+            break;
+        }
+    }
+
+
+
 
 
 
