@@ -3,7 +3,9 @@
 import java.util.ArrayList;
 
 public class Board extends Game{
-    private Pieces[][] board;
+    public  Pieces[][] board;
+    private SpotOnBoard currSpot;
+    private SpotOnBoard endSpot;
     public Board (){
         super();
         board = new Pieces[8][8];
@@ -63,6 +65,12 @@ public class Board extends Game{
         board[7][5] = new Knight(false);
         board[7][6] = new Bishop(false);
         board[7][7] = new Rook(false);
+        for(int i = 2; i < 6; i++){
+            for(int j = 0; j < 8 ; j++){
+                board[i][j] = new EmptySpace();
+            }
+        }
+
     }
     public Pieces[][] getBoard(){
         return board;
@@ -91,10 +99,182 @@ public class Board extends Game{
         }
         board = tempBoard;
     }
-    //check to see if valid moves
-    //check to see if pieces can make that move
+
+//
     public void takeTurn(String sPoint, String ePoint){
+        createSpotsMethods(sPoint, currSpot);
+        createSpotsMethods(ePoint, endSpot);
+        if(checkMoves()){
+
+
+        }
+
+
+
+    }
+/*
+    public Pieces[] getMoves(Pieces x){
+        ArrayList<Pieces> listMoves = new ArrayList<Pieces>();
+
+
+
+    }
+
+ */
+
+
+
+    public ArrayList<Pieces> getDiagonalMoves(Pieces x){
+        ArrayList<Pieces> diagonalMoves = new ArrayList<Pieces>();
+        int boardPosition = getCords(x)[0] * 10 + getCords(x)[1];
+        int times = 8 - getCords(x)[1] ;
+        System.out.println(times);
+        helperDiagonalMovesUp(times, boardPosition, diagonalMoves, 9);
+        helperDiagonalMovesDown(times, boardPosition, diagonalMoves, 9);
+        times = getCords(x)[1];
+        helperDiagonalMovesUp(times, boardPosition, diagonalMoves, 7);
+        helperDiagonalMovesDown(times, boardPosition, diagonalMoves, 7);
+        return diagonalMoves;
+    }
+
+    public void ss(){
+
+        for(Pieces x: getDiagonalMoves(board[2][3])){
+            System.out.println(x.getPieceType());
+        }
+
+    }
+
+
+
+
+
+
+
+    public boolean checkMoves(){
+        if(Game.whiteMove == currSpot.getPiece().getIfWhite() && Game.whiteMove != endSpot.getPiece().getIfWhite()){
+            return true;
+        }
+        System.out.println("You cant eat or move this piece");
+        return false;
+    }
+    public void createSpotsMethods(String point, SpotOnBoard x){
+        int row = Integer.parseInt(point.substring(1));
+        int column = "a".compareTo(point.substring(0, 1));
+        try {
+            x = new SpotOnBoard(row, column, board[row][column]);
+        }catch (Exception e){
+            System.out.println("The position placed is not on the board");
+        }
+    }
+
+    public int[] getCords(Pieces x){
+        int[] cordList = new int[2];
+        for(int i = 0 ; i < 8 ; i++){
+            for(int j = 0 ; j < 8 ; j++){
+                if(board[i][j] == x){
+                    cordList[0] = i;
+                    cordList[1] = j;
+                }
+            }
+        }
+        return cordList;
+
+    }
+    private void helperDiagonalMovesUp(int times, int boardPosition, ArrayList<Pieces> arrList, int y){
+
+        int tempTime = times;
+
+        while(tempTime != 0 ){
+
+
+            for(int i = boardPosition + y; i <= 63; i += y){
+                if(board[i / 10][i % 10].getIfWhite() != whiteMove) {
+                    arrList.add(board[i / 10][i % 10]);
+
+
+                }
+
+                tempTime--;
+                if(!board[i/10][i%10].getPieceType().equals("empty") ){
+                    tempTime = 0;
+
+                }
+
+            }
+
+
+
+        }
+    }
+    private void helperDiagonalMovesDown(int times, int boardPosition, ArrayList<Pieces> arrList, int y){
+        int tempTime = times;
+        while(tempTime != 0 ){
+            for(int i = boardPosition - y; i >= 0; i -= y){
+                if(board[i / 10][i % 10].getIfWhite() != whiteMove) {
+                    arrList.add(board[i / 10][i % 10]);
+                }
+                if(!board[i/10][i%10].getPieceType().equals("empty") ){
+                    tempTime = 1;
+                }
+                tempTime--;
+            }
+
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*
+
+
+    public void takeTurn(String sPoint, String ePoint){
+        starting = new SpotOnBoard(sPoint);
+        ending = new SpotOnBoard(ePoint);
         if(onBoard(sPoint) && onBoard(ePoint) && (deCode(sPoint).getIfWhite() == whiteMove) && (deCode(ePoint).getIfWhite() != whiteMove) ){
+
+
+
+
+
+
 
         }
     }
@@ -116,24 +296,22 @@ public class Board extends Game{
             return false;
         }
     }
-    private Pieces deCode(String code){
-        int row = Integer.parseInt(code.substring(1));
-        int column = "a".compareTo(code.substring(0, 1));
-        return board[row][column];
 
-    }
 
-    private Pieces deCode(int code){
-        String strCode = "" + code;
-        int row = Integer.parseInt(strCode.substring(1));
-        int column = "a".compareTo(strCode.substring(0, 1));
-        return board[row][column];
-
-    }
 
     private void crisCross(int boardPosition){
+        int row =
 
         ArrayList<Pieces> spots = new ArrayList<Pieces>();
+        int leftRepeats = 8 -
+
+        while(){
+
+        }
+
+
+
+
         for(int i = boardPosition + 9 ; i < 64; i +=9 ){
             if(onBoard(i) && deCode(boardPosition).getIfWhite() != whiteMove){
                 spots.add(deCode(boardPosition));
@@ -144,19 +322,13 @@ public class Board extends Game{
             break;
         }
 
+
+
+
     }
-    private void digAdder(ArrayList<Pieces> list, int boardPosition ){
-        for(int i = boardPosition + 9 ; i < 64; i +=9 ){
-            if(onBoard(i) && deCode(boardPosition).getIfWhite() != whiteMove){
-                list.add(deCode(boardPosition));
-                if(deCode(boardPosition) != null){
-                    list.add(deCode(boardPosition));
-                    break;
-                }
-            }
-            break;
-        }
-    }
+
+     */
+
 
 
 

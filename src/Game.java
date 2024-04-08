@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Game {
     private boolean gameOver;
-    public boolean whiteMove;
+    public static boolean whiteMove;
     private Scanner scan;
     private Board board;
 
@@ -12,7 +12,7 @@ public class Game {
         scan = new Scanner(System.in);
     }
 
-    /*
+
     public void menu(){
         System.out.println("Welcome to The Game Chess\nAll you have to do is specify the piece then write what location you want to the piece to go to");
         while(!gameOver){
@@ -20,8 +20,7 @@ public class Game {
             String startingPoint = scan.nextLine().toLowerCase();
             System.out.println("Where do you want it to go?");
             String endingPoint = scan.nextLine().toLowerCase();
-            //Method to move pieces 2 parameters starting piece location , destination
-            //board.takeTurn(startingPoint, endingPoint, whiteMove);
+            board.takeTurn(startingPoint, endingPoint);
             whiteMove = !whiteMove;
 
         }
@@ -31,7 +30,7 @@ public class Game {
     //
 
 
-     */
+
 
 
 }

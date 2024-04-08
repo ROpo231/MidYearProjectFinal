@@ -4,10 +4,14 @@ public class Pieces {
     private boolean isWhite;
     private boolean firstMove;
 
+
     public Pieces (String pieceType, boolean isWhite){
         this.pieceType = pieceType;
         this.isWhite = isWhite;
         onBoard = true;
+    }
+    public Pieces (String pieceType){
+        this.pieceType = pieceType;
     }
     public String getPieceType(){
         return pieceType;
@@ -21,6 +25,13 @@ public class Pieces {
     public boolean getIfWhite(){
         return isWhite;
     }
+
+    //move swap the pieces
+    public void move(){
+
+
+    }
+
 
 
 
