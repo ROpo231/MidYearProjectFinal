@@ -2,34 +2,42 @@ import java.util.Scanner;
 
 public class Game {
     private boolean gameOver;
-    public static boolean whiteMove;
-    private Scanner scan;
+    private boolean redTurn;
     private Board board;
-
+    private Scanner scan;
     public Game(){
         gameOver = false;
-        whiteMove = true;
+        redTurn = true;
+        board = new Board();
         scan = new Scanner(System.in);
     }
 
-
-    public void menu(){
-        System.out.println("Welcome to The Game Chess\nAll you have to do is specify the piece then write what location you want to the piece to go to");
+    public void start(){
+        System.out.println("Enter numbers 1 - 4 to pick the columns!! (Red is X and Yellow is O (Red first))");
         while(!gameOver){
-            System.out.println("Where is the piece you want to move?: ");
-            String startingPoint = scan.nextLine().toLowerCase();
-            System.out.println("Where do you want it to go?");
-            String endingPoint = scan.nextLine().toLowerCase();
-            board.takeTurn(startingPoint, endingPoint);
-            whiteMove = !whiteMove;
+            board.showBoard();
+            System.out.println("Player pick a column: ");
+            String answer = scan.nextLine();
+            int num = Integer.parseInt(answer) - 1;
+            board.addPiece(num, redTurn);
+            redTurn = !redTurn;
+            String winner = board.winnerChecker().type();
+            if(!winner.equals("Piece")){
+                board.showBoard();
+                System.out.println(winner.toUpperCase() + "  Won!!!!");
+                gameOver = true;
+            }
+            if(board.tie()){
+                board.showBoard();
+                System.out.println("Game tie");
+                gameOver = true;
+            }
+
+
 
         }
+
     }
-    //decode the positions
-    //check the positions on the board (weather they are there or not )
-    //
-
-
 
 
 
